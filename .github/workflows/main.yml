@@ -53,9 +53,11 @@ jobs:
         with:
           context: .
           load: true
-          tags: nischal2015/pygoat:latest
+          tags: '${{ secrets.DOCKERHUB_USERNAME }}/pygoat:latest'
 
       - name: Docker Scout
         uses: docker/scout-action@v1.8.0
         with:
           command: quickview,cves
+          only-severities: critical,high
+          sarif-file: scout-report.sarif
