@@ -48,10 +48,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and export
         uses: docker/build-push-action@v5
         with:
-          push: true
+          context: .
+          load: true
           tags: nischal2015/pygoat:latest
 
       - name: Docker Scout
